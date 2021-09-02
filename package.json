@@ -11,6 +11,7 @@
     "truffle-plugin-verify": "^0.5.11"
   },
   "devDependencies": {
+    "@openzeppelin/contracts": "^4.3.1",
     "dotenv": "^10.0.0"
   },
   "scripts": {

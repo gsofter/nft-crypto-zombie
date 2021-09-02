@@ -7,10 +7,13 @@ contract ZombieFactory is Ownable {
 
     uint256 dnaDigits = 16;
     uint256 dnaModulus = 10**dnaDigits;
+    uint256 cooldownTime = 1 days;
 
     struct Zombie {
         string name;
         uint256 dna;
+        uint256 level;
+        uint256 readyTime;
     }
 
     Zombie[] public zombies;
@@ -20,7 +23,7 @@ contract ZombieFactory is Ownable {
     mapping(address => uint256) public ownerZombieCount;
 
     function _createZombie(string memory _name, uint256 _dna) internal {
-        zombies.push(Zombie(_name, _dna));
+        zombies.push(Zombie(_name, _dna, 1, block.timestamp + cooldownTime));
         uint256 zombieId = zombies.length - 1;
         zombieToOwner[zombieId] = msg.sender;
         ownerZombieCount[msg.sender]++;
