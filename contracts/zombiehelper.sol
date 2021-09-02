@@ -25,4 +25,13 @@ contract ZombieHlper is ZombieFeeding {
         require(zombieToOwner[_zombieId] == msg.sender, "Not zombie owner");
         zombies[_zombieId].dna = _newDna;
     }
+
+    function getZombiesByOwner(address _owner)
+        external
+        view
+        returns (uint256[] memory)
+    {
+        uint256[] memory result = new uint256[](ownerZombieCount[_owner]);
+        return result;
+    }
 }
