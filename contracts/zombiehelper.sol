@@ -2,7 +2,7 @@ pragma solidity >=0.5.0 <0.9.0;
 
 import "./zombiefeeding.sol";
 
-contract ZombieHlper is ZombieFeeding {
+contract ZombieHelper is ZombieFeeding {
     // 1: Define levelUpFee
     uint256 levelUpFee = 0.001 ether;
 
