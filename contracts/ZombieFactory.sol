@@ -14,6 +14,8 @@ contract ZombieFactory is Ownable {
         uint256 dna;
         uint256 level;
         uint256 readyTime;
+        uint256 winCount;
+        uint256 lossCount;
     }
 
     Zombie[] public zombies;
@@ -25,7 +27,9 @@ contract ZombieFactory is Ownable {
     mapping(address => uint256) public ownerZombieCount;
 
     function _createZombie(string memory _name, uint256 _dna) internal {
-        zombies.push(Zombie(_name, _dna, 1, block.timestamp + cooldownTime));
+        zombies.push(
+            Zombie(_name, _dna, 1, block.timestamp + cooldownTime, 0, 0)
+        );
         uint256 zombieId = zombies.length - 1;
         zombieToOwner[zombieId] = msg.sender;
         ownerZombieCount[msg.sender]++;
