@@ -8,7 +8,7 @@ contract ZombieAttack is ZombieHelper {
 
     function attack(uint256 _zombieId, uint256 _targetId)
         external
-        ownerOf(_zombieId)
+        onlyOwnerOf(_zombieId)
     {
         Zombie storage myZombie = zombies[_zombieId];
         Zombie storage enemyZombie = zombies[_targetId];
